@@ -10,10 +10,10 @@ function App() {
 
   function save(e) {
     e.preventDefault();
-    const json = JSON.stringify({name : newName});
+    const json = JSON.stringify({name: newName});
     axios.post(URL + 'new', json, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-type': 'application/json'
       }
     }).then((response) => {
       setPeople(people => [...people, response.data]);
@@ -37,12 +37,12 @@ function App() {
     <>
       <h3>Calling Node Routes Demo</h3>
       <form onSubmit={save}>
-        <input type="text" value={newName} onChange={e => setNewName(e.target.value)} />
+        <input value={newName} onChange={e => setNewName(e.target.value)} />
         <button>Submit</button>
       </form>
       <ul>
         {people.map((person, index) => {
-          return <li key={index}>{person}</li>
+          return <li key={index}>{person.name}</li>
         })}
       </ul>
     </>

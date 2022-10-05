@@ -3,13 +3,17 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+app.use(express.json());
+
+
 const port = 3001;
 
 const names = [
-    'John',
-    'Paul',
-    'George',
-    'Ringo'
+    { name: 'John' },
+    { name: 'Jane' },
+    { name: 'Joe' },
+    { name: 'Jill' },
+    { name: 'Jack' }
 ]
 
 app.get('/', (req, res) => {
