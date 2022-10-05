@@ -23,6 +23,14 @@ function App() {
     })
   }
 
+  function remove(name) {
+    axios.delete(URL + 'delete/' + name).then((response) => {
+      setPeople(response.data.names);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
     axios.get(URL)
       .then(res => {
@@ -42,7 +50,7 @@ function App() {
       </form>
       <ul>
         {people.map((person, index) => {
-          return <li key={index}>{person.name}</li>
+          return <li key={index}>{person.name} <a href="#" onClick={() => remove(person.name)}>Delete</a> </li>
         })}
       </ul>
     </>
